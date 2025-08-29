@@ -3,7 +3,7 @@
     <!-- Toolbar -->
     <div class="flex flex-col sm:flex-row sm:items-center gap-3 p-3 border-b border-zinc-800">
       <div class="px-2 py-1 text-[10px] uppercase tracking-wider rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-        Bases potentielles (fictif)
+        Bases potentielles
       </div>
 
       <div class="flex-1"></div>
@@ -85,7 +85,7 @@
 
             <div class="rounded-xl border border-zinc-800 bg-zinc-950/50 p-3 text-xs">
               <div class="text-zinc-400">Signals</div>
-              <div class="mt-1 flex flex-wrap gap-1">
+              <div class="mt-1 flex flex-wrap gap-1 w-30">
                 <span v-for="s in b.signals" :key="s"
                       class="text-[10px] px-1.5 py-0.5 rounded border"
                       :class="signalTone(s)">
@@ -113,13 +113,13 @@ import { ref, computed } from 'vue'
 
 // ---- Mock réaliste (10 bases)
 const baseData = [
-  mkBase(1, 'Obsidian Library',  18240,  -950,  16200, 2.41,  8.6, 'il y a 18 min',  14.2, ['chunk loads','portal','elytra'], 'Hold',  5, 12, 37),
+  mkBase(1, 'Obsidian Library',  18240,  -950,  16200, 2.41,  0.4, 'il y a 18 min',  14.2, ['chunk loads','portal','elytra'], 'Hold',  5, 12, 37),
   mkBase(2, 'Winterhold',       -33120,  22110, 21500, 3.02,  0.92, 'il y a 42 min', 36.8, ['chunk loads','shulker','beacon'], 'Active', 7, 18, 45),
   mkBase(3, 'SkyVault',          5200,  -48000, 11800, 1.75,  0.84, 'il y a 7 min',  48.1, ['elytra','portal'], 'Hidden', 3, 7, 22),
-  mkBase(4, 'Tetra Spire',      -9050,   10400,  8200, 0.98,  0.78, 'il y a 3 h',    12.3, ['chunk loads','rail'], 'Ruins', 2, 2, 9),
+  mkBase(4, 'Tetra Spire',      -9050,   10400,  8200, 0.98,  0.26, 'il y a 3 h',    12.3, ['chunk loads','rail'], 'Ruins', 2, 2, 9),
   mkBase(5, 'Nether Yard',       6400,    6400, 15400, 2.89,  0.88, 'il y a 25 min',  9.1, ['portal','elytra','beacon'], 'Active', 6, 15, 31),
   mkBase(6, 'Quartz Garden',   -22000,  -22000,  9600, 1.34,  0.81, 'il y a 1 h',    31.7, ['shulker','chunk loads'], 'Hold', 4, 6, 18),
-  mkBase(7, 'Bedrock Museum',    9800,   12900,  7400, 0.76,  0.87, 'il y a 11 min', 21.9, ['chunk loads','elytra'], 'Hidden', 2, 5, 14),
+  mkBase(7, 'Bedrock Museum',    9800,   12900,  7400, 0.76,  0.67, 'il y a 11 min', 21.9, ['chunk loads','elytra'], 'Hidden', 2, 5, 14),
   mkBase(8, 'Lag Factory',     -41200,  -40200, 32800, 4.42,  0.75, 'il y a 2 min',  58.4, ['chunk loads','redstone','portal'], 'Critical', 12, 27, 63),
   mkBase(9, 'Ametrine Cove',    27100,  -33150,  6800, 0.69,  0.79, 'il y a 4 h',     6.3, ['elytra'], 'Hold', 1, 1, 6),
   mkBase(10,'The Archive',     -1500,     2600, 18950, 3.35,  0.91, 'il y a 33 min', 17.2, ['chunk loads','portal','shulker'], 'Active', 8, 19, 40),
@@ -201,26 +201,26 @@ function trustColor(t){
 
 function badgeTone(b){
   const tones = {
-    Active: 'border-emerald-500/40 text-emerald-300',
-    Hidden: 'border-sky-500/40 text-sky-300',
-    Hold: 'border-zinc-600 text-zinc-300',
-    Critical: 'border-rose-500/40 text-rose-300',
-    Ruins: 'border-amber-500/40 text-amber-300',
+    Active: '!border-emerald-500/40 !text-emerald-300',
+    Hidden: '!border-sky-500/40 !text-sky-300',
+    Hold: '!border-zinc-600 !text-zinc-300',
+    Critical: '!border-rose-500/40 !text-rose-300',
+    Ruins: '!border-amber-500/40 !text-amber-300',
   }
-  return tones[b.category] || 'border-zinc-600 text-zinc-300'
+  return tones[b.category] || '!border-zinc-600 !text-zinc-300'
 }
 
 function signalTone(s){
   const map = {
-    'chunk loads': 'border-emerald-500/40 text-emerald-300',
-    'portal': 'border-fuchsia-500/40 text-fuchsia-300',
-    'elytra': 'border-sky-500/40 text-sky-300',
-    'shulker': 'border-amber-500/40 text-amber-300',
-    'beacon': 'border-cyan-500/40 text-cyan-300',
-    'redstone': 'border-rose-500/40 text-rose-300',
-    'rail': 'border-indigo-500/40 text-indigo-300',
+    'chunk loads': '!border-emerald-500/40 !text-emerald-300',
+    'portal': '!border-fuchsia-500/40 !text-fuchsia-300',
+    'elytra': '!border-sky-500/40 !text-sky-300',
+    'shulker': '!border-amber-500/40 !text-amber-300',
+    'beacon': '!border-cyan-500/40 !text-cyan-300',
+    'redstone': '!border-rose-500/40 !text-rose-300',
+    'rail': '!border-indigo-500/40 !text-indigo-300',
   }
-  return map[s] || 'border-zinc-600 text-zinc-300'
+  return map[s] || '!border-zinc-600 !text-zinc-300'
 }
 
 function copyCoords(b){
