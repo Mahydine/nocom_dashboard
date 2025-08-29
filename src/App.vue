@@ -6,6 +6,7 @@ import StatsBoard from './components/StatsBoard.vue'
 import RadarScanner from './components/RadarScanner.vue'
 import NocomCharts from './components/NocomCharts.vue'
 import PotentialBasesList from './components/PotentialBasesList.vue'
+import FakeConsole from './components/FakeConsole.vue'
 
 const stats = ref({ packets: 12345678, chunks: 4321, radius: 128, nodes: 6 })
 const barData = ref(Array.from({ length: 24 }, () => Math.floor(20 + Math.random() * 80)))
@@ -287,6 +288,8 @@ const currentTileBaseUrl = computed(() =>
             :initial-zoom="1" />
 
         </section>
+
+        <FakeConsole :height="420" :min-delay="900" :max-delay="2800" />
 
       </div>
     </main>
